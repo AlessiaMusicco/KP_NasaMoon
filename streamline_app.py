@@ -717,10 +717,10 @@ elif st.session_state.phase == 'nasa_task':
 
             // STAI Setup
             const staiStatements = [
-                "Mi sento calmo/a", "Mi sento sicuro/a", "Mi sento teso/a", "Mi sento sotto pressione", "Mi sento a mio agio",
-                "Mi sento turbato/a", "Mi sto preoccupando per possibili guai", "Mi sento soddisfatto/a", "Mi sento impaurito/a", "Mi sento comodo/a",
-                "Mi sento sicuro/a di me", "Mi sento nervoso/a", "Mi sento agitato/a", "Mi sento indeciso/a", "Mi sento rilassato/a",
-                "Mi sento contento/a", "Sono preoccupato/a", "Mi sento confuso/a", "Mi sento saldo/a", "Mi sento bene"
+                "Mi sento calmo/a", "Mi sento sicuro/a", "Sono teso/a", "Mi sento sotto pressione", "Mi sento tranquillo/a",
+                "Mi sento turbato/a", "Sono attualmente preoccupato/a per possibili disgrazie", "Mi sento soddisfatto/a", "Mi sento spaventato/a", "Mi sento a mio agio",
+                "Mi sento sicuro/a di me", "Mi sento nervoso/a", "Sono agitato/a", "Mi sento indeciso/a", "Sono rilassato/a",
+                "Mi sento contento/a", "Sono preoccupato/a", "Mi sento confuso/a", "Mi sento disteso/a", "Mi sento bene"
             ];
             const invertedStai = [1, 2, 5, 8, 10, 11, 15, 16, 19, 20];
             
