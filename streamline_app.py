@@ -761,8 +761,49 @@ elif st.session_state.phase == 'nasa_task':
             // TLX tracker
             let tlxTouched = [false, false, false, false, false];
 
-            function copyNasaState() {{ /* copy code removed for brevity but exists visually */ }}
+            function copyNasaState() {{
+                let copyText = "Task: NASA Survival Task\\n";
+                copyText += "Il partecipante deve ordinare 15 oggetti dal più importante (1) al meno importante (15).\\n\\n";
+                copyText += "Ranking Attuale impostato dal partecipante:\\n";
+                
+                // Estrae l'ordine attuale dalla lista
+                let items = document.querySelectorAll('.sortable-item');
+                items.forEach((item, index) => {{
+                    let itemName = item.getAttribute('data-name');
+                    copyText += (index + 1) + ". " + itemName + "\\n";
+                }});
 
+                // API per copiare negli appunti
+                navigator.clipboard.writeText(copyText).then(function() {{
+                    const btn = document.getElementById('copy-nasa-btn');
+                    btn.innerText = '✅ COPIATO!';
+                    btn.style.backgroundColor = '#4CAF50';
+                    btn.style.color = 'white';
+                    setTimeout(() => {{
+                        btn.innerText = '📋 COPIA ISTRUZIONI E RANKING ATTUALE';
+                        btn.style.backgroundColor = '#e0e2e6';
+                        btn.style.color = '#31333F';
+                    }}, 2000);
+                }}).catch(function(err) {{
+                    // Fallback se le API clipboard sono bloccate dall'iframe di Streamlit
+                    const el = document.createElement('textarea');
+                    el.value = copyText;
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                    
+                    const btn = document.getElementById('copy-nasa-btn');
+                    btn.innerText = '✅ COPIATO!';
+                    btn.style.backgroundColor = '#4CAF50';
+                    btn.style.color = 'white';
+                    setTimeout(() => {{
+                        btn.innerText = '📋 COPIA ISTRUZIONI E RANKING ATTUALE';
+                        btn.style.backgroundColor = '#e0e2e6';
+                        btn.style.color = '#31333F';
+                    }}, 2000);
+                }});
+            }}
             function updateBadges() {{
                 document.querySelectorAll('.sortable-item').forEach((item, index) => {{
                     item.querySelector('.badge').innerText = index + 1;
